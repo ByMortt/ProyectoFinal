@@ -14,8 +14,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.text.SimpleDateFormat;
 
 /**
  * 
@@ -242,7 +244,11 @@ public class ServiciosEscolares {
      * Crea un archivo CSV con los datos de los alumnos.
      */
     public void crearArchivoDatosAlumnoCSV() {
-        String nombreArchivo = "DatosAlumno.csv";
+        String formatoFechaHora = "yyyyMMdd_HHmm";
+        SimpleDateFormat formateador = new SimpleDateFormat(formatoFechaHora);
+        String fechaHoraActual = formateador.format(new Date());
+
+        String nombreArchivo = "Datos Alumnos " + fechaHoraActual + ".csv";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
             // Escribir encabezados

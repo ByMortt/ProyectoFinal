@@ -1,0 +1,185 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "proyectofinal.ProyectoFinal#main(String[])",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "proyectofinal.ProyectoFinal",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_854467473 { 
+   	label=proyectofinal
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1138448015 { 
+   	label=ServiciosEscolares
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   ServiciosEscolares854467473XXXbuscarAlumnoPorNombre1808118735[
+	label="+ buscarAlumnoPorNombre()"
+	style=filled
+	fillcolor=white
+	tooltip="ServiciosEscolares
+
+&#10;  Busca alumnos por nombre y devuelve una lista de los alumnos encontrados.&#10; &#10;  @param nombre nombre o parte del nombre a buscar&#10;  @return lista de alumnos encontrados&#10; "
+	fontcolor=darkgreen
+];
+
+ServiciosEscolares854467473XXXbuscarAlumnoPorNumeroCuenta104431[
+	label="+ buscarAlumnoPorNumeroCuenta()"
+	style=filled
+	fillcolor=white
+	tooltip="ServiciosEscolares
+
+&#10;  Busca un alumno por número de cuenta y devuelve el alumno correspondiente.&#10; &#10;  @param numeroCuentaBuscado número de cuenta del alumno buscado&#10;  @return alumno encontrado o null si no se encontró&#10; "
+	fontcolor=darkgreen
+];
+
+ServiciosEscolares854467473XXXcrearArchivoDatosAlumnoCSV0[
+	label="+ crearArchivoDatosAlumnoCSV()"
+	style=filled
+	fillcolor=white
+	tooltip="ServiciosEscolares
+
+&#10;  Crea un archivo CSV con los datos de los alumnos.&#10; "
+	fontcolor=darkgreen
+];
+
+ServiciosEscolares854467473XXXmodificarDatosAlumno271909032[
+	label="+ modificarDatosAlumno()"
+	style=filled
+	fillcolor=white
+	tooltip="ServiciosEscolares
+
+&#10;  Modifica los datos de un alumno existente.&#10; &#10;  @param numeroCuenta número de cuenta del alumno a modificar&#10;  @param nuevoNombre nuevo nombre del alumno&#10;  @param nuevoApPaternonuevo apellido paterno del alumno&#10;  @param nuevoApMaternonuevo apellido materno del alumno&#10;  @param nuevaDireccionnueva dirección del alumno&#10;  @param nuevaEdad nueva edad del alumno&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1440788404 { 
+   	label=ProyectoFinal
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   ProyectoFinal854467473XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="ProyectoFinal
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1699783588 { 
+   	label=SistemaMenu
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   SistemaMenu854467473XXXejecutarMenuPrincipal0[
+	label="+ ejecutarMenuPrincipal()"
+	style=filled
+	fillcolor=white
+	tooltip="SistemaMenu
+
+&#10;  Método para ejecutar el menú principal del sistema.&#10;  Muestra las opciones del menú y maneja la entrada del usuario.&#10; "
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+ProyectoFinal854467473XXXmain1859653459 -> SistemaMenu854467473XXXejecutarMenuPrincipal0;
+ServiciosEscolares854467473XXXmodificarDatosAlumno271909032 -> ServiciosEscolares854467473XXXbuscarAlumnoPorNumeroCuenta104431;
+SistemaMenu854467473XXXejecutarMenuPrincipal0 -> ServiciosEscolares854467473XXXbuscarAlumnoPorNombre1808118735;
+SistemaMenu854467473XXXejecutarMenuPrincipal0 -> ServiciosEscolares854467473XXXbuscarAlumnoPorNumeroCuenta104431;
+SistemaMenu854467473XXXejecutarMenuPrincipal0 -> ServiciosEscolares854467473XXXcrearArchivoDatosAlumnoCSV0;
+SistemaMenu854467473XXXejecutarMenuPrincipal0 -> ServiciosEscolares854467473XXXmodificarDatosAlumno271909032;
+    
+}
+@enduml

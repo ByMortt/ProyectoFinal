@@ -126,7 +126,9 @@ public class SistemaMenu {
             System.out.println("1. Mostrar Lista de Alumnos");
             System.out.println("2. Buscar Alumno");
             System.out.println("3. Cambiar Datos del Alumno");
-            System.out.println("4. Salir");
+            System.out.println("4. Generar nueva base de alumnos");
+            System.out.println("5. Realizar copia de seguridad.");
+            System.out.println("6. Salir");
             System.out.print("Ingrese su opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -138,7 +140,14 @@ public class SistemaMenu {
                 }
                 case 2 -> ejecutarMenuAlumno();
                 case 3 -> modificarDatosAlumno();
-                case 4 -> salirMenuTrabajador = true;
+                case 4 -> {
+                    serviciosEscolares.generarListaAlumnos();
+                    serviciosEscolares.ordenarListaAlumnosPorInscripcion();
+                    serviciosEscolares.crearArchivoDatosAlumnoCSV();
+                    System.out.println("Nueva base de alumnos generada y guardada correctamente.");
+                }
+                case 5 -> serviciosEscolares.crearArchivoDatosAlumnoCSV();
+                case 6 -> salirMenuTrabajador = true;
                 default -> System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
             }
         }
@@ -157,22 +166,57 @@ public class SistemaMenu {
         Alumno alumno = this.serviciosEscolares.buscarAlumnoPorNumeroCuenta(numeroCuenta);
 
         if (alumno != null) {
-            System.out.print("Ingrese el nuevo nombre del alumno: ");
-            String nuevoNombre = scanner.nextLine();
-            System.out.print("Ingrese el nuevo apellido paterno del alumno: ");
-            String nuevoApellidoPaterno = scanner.nextLine();
-            System.out.print("Ingrese el nuevo apellido materno del alumno: ");
-            String nuevoApellidoMaterno = scanner.nextLine();
-            System.out.print("Ingrese la nueva dirección del alumno separado por comas de la siguiente manera: ");
-            System.out.println("calle,numero de calle,codigo postal,delegacion,colonia,estado,pais");
-            String nuevaDireccion = scanner.nextLine();
-            System.out.print("Ingrese la nueva edad del alumno: ");
-            int nuevaEdad = scanner.nextInt();
-            scanner.nextLine();
+            boolean salirModificarAlumno = false;
+            while (!salirModificarAlumno) {
+                System.out.println("Seleccione el campo que desea modificar:");
+                System.out.println("1. Nombre");
+                System.out.println("2. Apellido Paterno");
+                System.out.println("3. Apellido Materno");
+                System.out.println("4. Dirección");
+                System.out.println("5. Edad");
+                System.out.println("6. Salir");
+                System.out.print("Ingrese su opción: ");
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
 
-            serviciosEscolares.modificarDatosAlumno(numeroCuenta, nuevoNombre, nuevoApellidoPaterno, nuevoApellidoMaterno, nuevaDireccion, nuevaEdad);
-        } else {
-            System.out.println("No se encontró ningún alumno con el número de cuenta especificado.");
-        }
+                switch (opcion) {
+                    case 1 -> {
+                        System.out.print("Ingrese el nuevo nombre del alumno: ");
+                        String nuevoNombre = scanner.nextLine();
+                        alumno.setNombre(nuevoNombre);
+                    }
+                    case 2 -> {
+                        System.out.print("Ingrese el nuevo apellido paterno del alumno: ");
+                        String nuevoApellidoPaterno = scanner.nextLine();
+                        alumno.setApPaterno(nuevoApellidoPaterno);
+                    }
+                    case 3 -> {
+                        System.out.print("Ingrese el nuevo apellido materno del alumno: ");
+                        String nuevoApellidoMaterno = scanner.nextLine();
+                        alumno.setApMaterno(nuevoApellidoMaterno);
+                    }
+                    case 4 -> {
+                        System.out.print("Ingrese la nueva dirección del alumno: ");
+                        String nuevaDireccion = scanner.nextLine();
+                        alumno.setDireccion(nuevaDireccion);
+                    }
+                    case 5 -> {
+                        System.out.print("Ingrese la nueva edad del alumno: ");
+                        int nuevaEdad = scanner.nextInt();
+                        scanner.nextLine();
+                        alumno.setEdad(nuevaEdad);
+                    }
+                    case 6 -> salirModificarAlumno = true;
+                    default -> {
+                        System.out.println("Opción inválida. No se realizaron modificaciones.");
+                    }
+                }    
+            }
+            serviciosEscolares.crearArchivoDatosAlumnoCSV();
+            System.out.println("Los datos del alumno han sido modificados y guardados correctamente.");
+        } 
+        else {
+                System.out.println("No se encontró ningún alumno con el número de cuenta especificado.");
+            }
     }
 }

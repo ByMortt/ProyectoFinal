@@ -1,0 +1,178 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "proyectofinal.ProyectoFinal",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_854467473 { 
+   	label=proyectofinal
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Alumno854467473[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Alumno</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   apMaterno: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   apPaterno: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   creditos: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   direccion: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   edad: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombre: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numCuenta: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numInscripcion: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   semestre: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ProyectoFinal854467473[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ProyectoFinal</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServiciosEscolares854467473[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServiciosEscolares</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   listaAlumnos: List&lt;Alumno&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ buscarAlumnoPorNombre(nombre: String): List&lt;Alumno&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buscarAlumnoPorNumeroCuenta(numeroCuentaBuscado: int): Alumno</TD></TR>
+<TR><TD ALIGN="LEFT" >- busquedaBinaria(numeroCuenta: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ crearArchivoDatosAlumnoCSV()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generarListaAlumnos()</TD></TR>
+<TR><TD ALIGN="LEFT" >- generarNumeroCuenta(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- intercambiar(i: int, j: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- leerArchivo(nombreArchivo: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ modificarDatosAlumno(numeroCuenta: int, nuevoNombre: String, nuevoApPaterno: String, nuevoApMaterno: String, nuevaDireccion: String, nuevaEdad: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ordenarListaAlumnosPorInscripcion()</TD></TR>
+<TR><TD ALIGN="LEFT" >- particion(inicio: int, fin: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- quicksort(inicio: int, fin: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SistemaMenu854467473[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SistemaMenu</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   salir: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   scanner: Scanner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   serviciosEscolares: ServiciosEscolares [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- ejecutarMenuAlumno()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ejecutarMenuPrincipal()</TD></TR>
+<TR><TD ALIGN="LEFT" >- ejecutarMenuTrabajador()</TD></TR>
+<TR><TD ALIGN="LEFT" >- ingresarComoTrabajador()</TD></TR>
+<TR><TD ALIGN="LEFT" >- modificarDatosAlumno()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ProyectoFinal854467473 -> SistemaMenu854467473[label="main() -> ejecutarMenuPrincipal()"];
+ServiciosEscolares854467473 -> Alumno854467473[label="listaAlumnos
+[0..1]"];
+SistemaMenu854467473 -> ServiciosEscolares854467473[label="serviciosEscolares
+[0..1]"];
+    
+}
+@enduml
